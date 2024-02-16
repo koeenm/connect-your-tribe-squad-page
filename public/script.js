@@ -1,4 +1,4 @@
-let menu = document.querySelector('.menu')
+const menu = document.querySelector('.menu')
 console.log('1')
 
 menu.addEventListener("click", function() {
