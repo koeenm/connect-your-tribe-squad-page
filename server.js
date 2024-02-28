@@ -22,22 +22,34 @@ app.set('views', './views')
 // Gebruik de map 'public' voor statische resources, zoals stylesheets, afbeeldingen en client-side JavaScript
 app.use(express.static('public'))
 
+// Messages laten versturen enzo
+app.use(express.urlencoded({extended: true}))
+
+const messages = []
+
 // Maak een GET route voor de index
 app.get('/', function (request, response) {
   // Haal alle personen uit de WHOIS API op
-  fetchJson(apiUrl + '/person/?filter={"squad_id":3}&sort=name').then((apiData) => {
+  fetchJson('https://fdnd.directus.app/items/person').then((apiData) => {
     // ?filter={"squad_id":3}
     // &sort=name
     // apiData bevat gegevens van alle personen uit alle squads
     // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
 
     // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
-    response.render('index', {persons: apiData.data, squads: squadData.data})
+    response.render('index', {
+      persons: apiData.data, 
+      squads: squadData.data,
+      messages: messages
+    })
   })
 })
 
 // Maak een POST route voor de index
 app.post('/', function (request, response) {
+  // Voeg een nieuw bericht toe aan de messages array
+  messages.push(request.body.bericht)
+
   // Er is nog geen afhandeling van POST, redirect naar GET op /
   response.redirect(303, '/')
 })
@@ -47,8 +59,21 @@ app.get('/person/:id', function (request, response) {
   // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
   fetchJson(apiUrl + '/person/' + request.params.id).then((apiData) => {
     // Render person.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
-    response.render('person', {person: apiData.data, squads: squadData.data})
+    response.render('person', {person: 
+      apiData.data, 
+      squads: squadData.data,
+      messages: messages
+    })
   })
+})
+
+// Maak een POST route voor person
+app.post('/', function (request, response) {
+  // Er is nog geen afhandeling van POST, redirect naar GET op /
+  messages.push(request.body.bericht)
+  // gebruik maken van person variabele omdat er anders weer undefined staat
+  const person = apiData.data
+  response.redirect(303, '/person/' + request.params.id);
 })
 
 // Stel het poortnummer in waar express op moet gaan luisteren

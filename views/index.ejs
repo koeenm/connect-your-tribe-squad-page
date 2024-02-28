@@ -2,63 +2,79 @@
 
 <main>
 
-<section class="menu">
-  <div class="filter">
-    <h2>Filter:</h2>
-      <h3>Klas</h3>
-        <form action="">
-          <label for="class">
+  <form>
+    <fieldset>
+      <legend>Filter</legend>
+      <p>Klas</p>
+
+          <label>
             <input type="checkbox">1D
           </label>
 
-          <label for="class">
+          <label>
             <input type="checkbox">1E
           </label>
 
-          <label for="class">
+          <label>
             <input type="checkbox">1F
           </label>
-        </form>
 
-      <h3>Geslacht</h3>
-        <form action="">
-          <label for="gender">
+        <p>Geslacht</p>
+
+          <label>
             <input type="checkbox">Jongetje
           </label>
 
-          <label for="gender">
+          <label>
             <input type="checkbox">Meisje
           </label>
-        </form>
 
-      <h3>Avatar</h3>
-        <form action="">
-          <label for="avatar">
-            <input type="checkbox">Met avatar
+          <label>
+            <input type="checkbox">Anders
           </label>
 
-          <label for="avatar">
-            <input type="checkbox">Zonder avatar
-          </label>
-        </form>
-  </div>
+        <p>Avatar</p>
+          
+        <label>
+          <input type="checkbox">Met avatar
+        </label>
 
-  <div class="sort">
-    <h2>Sorteren:</h2>
-      <form action="">
+        <label>
+          <input type="checkbox">Zonder avatar
+        </label>
 
-        <label for="name">
+    </fieldset>
+
+    <fieldset>
+      <legend>Sorteer</legend>
+
+        <label>
           <input type="radio">Naam A-Z
         </label>
 
-        <label for="name">
+        <label>
           <input type="radio">Naam Z-A
         </label>
-      </form>
-  </div>
-</section>
+    </fieldset>
+  </form>
 
-<section class="cards">
+  <section class="messager">
+    <h2>Huidige berichten</h2>
+
+      <ul class="message-block">
+          <% messages.forEach(message => { %>
+              <li class="messages"><%= message %> </li>
+          <% }) %>
+      </ul>
+
+      <form method="POST" action="/">
+          <label>
+              Berichtje:
+              <textarea required name="bericht"></textarea>
+          </label>
+          <button type="submit"> Verstuur bericht </button>
+      </form>
+  </section>
 
   <ul>
     <% persons.forEach(person => { %>
@@ -66,8 +82,6 @@
         <img src="<%= person.avatar %>" alt="person avatar"></li>
     <% }) %>
   </ul>
-
-</section>
 
 </main>
 

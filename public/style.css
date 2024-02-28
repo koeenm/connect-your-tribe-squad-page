@@ -1,161 +1,88 @@
-body {
-    background:pink;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
+* {
+    box-sizing: border-box;
 }
 
-h1 {
-    color: black;
+header {
 
-    display: flex;
-    justify-content: center;
 }
 
 main {
-    display: block;
-    /* flex-direction: column; */
+    display: flex;
+}
 
-    & .menu {
-        width: 100%;
-        height: 27em;
-        background-color: rgb(200, 73, 59);
-        padding: 1em 0;
-        border-top-right-radius: 1em;
-        border-bottom-right-radius: 1em;
+form {
+    width: 90vw;
+    background-color: whitesmoke;
+    padding: 0;
 
-        transform: translateX(-92.5%);
-        transition: 300ms ease;
-
-        position: fixed;
-        }
-
-        div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        form {
-            display: flex;
-            align-items: center;
-        }
-    }
-
-.cards {            
-    
-    & ul {
-        background-color: pink;
-
-        list-style: none;
-
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-
-        gap: 1em;
-        padding: 1em;
-    }
-
-    li {
-        width: 20em;
-        height: 25em;
-        object-fit: cover;
-
-        background-color: salmon;
-        border-radius: 1em;
-        padding: 1em;
-
+    fieldset {        
         display: flex;
         flex-direction: column;
-        align-items: center;
+        border: none;
+        width: 12.5em;
+    }
 
-        & a {
-            color: black;
-            text-decoration: none;
+    legend {
+        font-weight: 600;
+    }
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin: 0;
+
+    li {
+        list-style: none;
+        width: 30vw;
+        background-color: whitesmoke;
+    }
+
+    img {
+        width: 12.5em;
+        height: 12.5em;
+        object-fit: cover;
+    }
+}
+
+.messager {
+    position: fixed;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+    height: 100vh;
+    background-color: whitesmoke;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        width: 100%;
+        margin: auto 0;
+
+        label {
+            display: flex;
+            flex-direction: column;
         }
 
-        img {
-            width: 15em;
-            height: 15em;
-            object-fit: cover;
-
-            border-radius: 1em;
+        button {
+            width: 80%;
+            align-self: center;
         }
     }
 }
 
-.menu-visible {
-    transform: translateX(0);
+ul.message-block {
+    display: block;
+    padding: 0;
 }
 
-@media (min-width: 720px) {
-    main {
-        display: flex;
-    
-        & .menu {
-            width: 25vw;
-            height: 100%;
-            position: relative;
-            transform: translateX(0);
-            }
-    
-            form {
-                display: flex;
-                flex-direction: column;
-    
-                padding-left: 1em;
-            }
-        }
-        
-        .cards {
-            width: 85vw;
-        
-            & ul {
-                background-color: pink;
-    
-                list-style: none;
-        
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-    
-                gap: 1em;
-                padding: 1em;
-            }
-        
-            li {
-                width: 20em;
-                height: 25em;
-                object-fit: cover;
-    
-                background-color: salmon;
-                border-radius: 1em;
-                padding: 1em;
-    
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-    
-                & a {
-                    color: black;
-                    text-decoration: none;
-                }
-    
-                img {
-                    width: 15em;
-                    height: 15em;
-                    object-fit: cover;
-    
-                    border-radius: 1em;
-                }
-            }
-        } 
+li.messages {
+    background-color: blueviolet;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    width: 100%;
 }
-
-
-
-
-
-
-
 

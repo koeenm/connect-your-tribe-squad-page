@@ -4,6 +4,24 @@
 
 <h2><%= person.name %></h2>
 
+<img src="<%= person.avatar %>" alt="person avatar">
+
 <p>Squad: <%= person.squad_id %>
 
-<%- include('./partials/foot') %>
+<h2>Huidige berichten</h2>
+
+    <ul>
+        <% messages.forEach(message => { %>
+            <li><%= message %> </li>
+        <% }) %>
+    </ul>
+
+    <form method="POST" action="/">
+        <label>
+            Berichtje:
+            <textarea required name="bericht"></textarea>
+        </label>
+        <button type="submit"> Verstuur bericht </button>
+    </form>
+
+<!-- <%- include('./partials/foot') %> -->
