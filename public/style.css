@@ -1,19 +1,53 @@
 * {
     box-sizing: border-box;
+    margin: 0;
 }
 
 header {
+    font-size: 2em;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5em;
+}
 
+.menu-opener {
+    height: 2em;
+    width: 2em;
+    background-color: whitesmoke;
+    border-radius: 2em;
+}
+
+.menu-opener:hover {
+    cursor: pointer;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
 }
 
 main {
     display: flex;
 }
 
-form {
-    width: 90vw;
-    background-color: whitesmoke;
-    padding: 0;
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.menu {
+    height: 70vh;
+    background-color: rgb(158, 158, 158);
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+
+    position: fixed;
+    transform: translateX(-90%);
+    transition: 300ms ease;
+
+    padding-top: 1em;
 
     fieldset {        
         display: flex;
@@ -25,17 +59,31 @@ form {
     legend {
         font-weight: 600;
     }
+
+    p {
+        padding: 1em 0;
+    }
+
+    label {
+        padding: 0 0.5em;
+    }
+}
+
+.menu-translate {
+    transform: translateX(0);
 }
 
 ul {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 1em;
     margin: 0;
+    max-width: 80vw;
 
     li {
         list-style: none;
-        width: 30vw;
+        width: 20em;
         background-color: whitesmoke;
     }
 
@@ -47,10 +95,10 @@ ul {
 }
 
 .messager {
-    position: fixed;
-    right: 0;
     display: flex;
     flex-direction: column;
+    position: absolute;
+    right: 0;
     width: 15vw;
     height: 100vh;
     background-color: whitesmoke;

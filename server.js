@@ -53,27 +53,30 @@ app.post('/', function (request, response) {
   // Er is nog geen afhandeling van POST, redirect naar GET op /
   response.redirect(303, '/')
 })
+console.log('getdetails0')
 
 // Maak een GET route voor een detailpagina met een request parameter id
 app.get('/person/:id', function (request, response) {
+  console.log('1')
   // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
-  fetchJson(apiUrl + '/person/' + request.params.id).then((apiData) => {
+  fetchJson('https://fdnd.directus.app/items/person/' + request.params.id).then((apiData) => {
+    console.log('2')
     // Render person.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
-    response.render('person', {person: 
-      apiData.data, 
+    response.render('person', {
+      person: apiData.data, 
       squads: squadData.data,
       messages: messages
     })
+    console.log('3')
   })
 })
 
 // Maak een POST route voor person
-app.post('/', function (request, response) {
+app.post('/person/:id', function (request, response) {
   // Er is nog geen afhandeling van POST, redirect naar GET op /
   messages.push(request.body.bericht)
   // gebruik maken van person variabele omdat er anders weer undefined staat
-  const person = apiData.data
-  response.redirect(303, '/person/' + request.params.id);
+  response.redirect(303, '/person/' + request.params.id)
 })
 
 // Stel het poortnummer in waar express op moet gaan luisteren

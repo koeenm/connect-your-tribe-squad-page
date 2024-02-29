@@ -16,7 +16,8 @@
         <% }) %>
     </ul>
 
-    <form method="POST" action="/">
+    <form method="POST" action="/detail/<%= person.id %>>
+        <input type="hidden" name="id" value="<%= person.id %>">
         <label>
             Berichtje:
             <textarea required name="bericht"></textarea>

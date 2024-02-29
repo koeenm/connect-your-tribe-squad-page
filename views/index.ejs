@@ -2,7 +2,7 @@
 
 <main>
 
-  <form>
+  <form class="menu">
     <fieldset>
       <legend>Filter</legend>
       <p>Klas</p>
@@ -78,8 +78,8 @@
 
   <ul>
     <% persons.forEach(person => { %>
-      <li><a href="./person/<%= person.id %>"><%= person.name %></a><%= person.squad_id %>
-        <img src="<%= person.avatar %>" alt="person avatar"></li>
+      <li><a href="./person/<%= person.id %>"><%= person.name %></a>
+        <img src="<%= person.avatar %>" alt="person avatar"></li><%= person.squad_id %>
     <% }) %>
   </ul>
 
